@@ -15,7 +15,7 @@ A module for MagicMirror<sup>2</sup> that displays the daily Dilbert strip.
  **Example:**
 ```
  {
-    module: 'Dilbert',
+    module: 'MMM-DailyDilbert',
 	position: 'bottom_bar',
 	config: {
 		updateInterval : 36000000
