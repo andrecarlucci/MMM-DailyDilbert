@@ -1,5 +1,7 @@
-# MMM-Dilbert
+# MMM-DailyDilbert
 A module for MagicMirror<sup>2</sup> that displays the daily Dilbert strip.
+
+<img src="dilbert.png"></img>
 
 ## Dependencies
   * A [MagicMirror<sup>2</sup>](https://github.com/MichMich/MagicMirror) installation
