@@ -16,11 +16,11 @@ module.exports = NodeHelper.create({
 			
 			var url = "http://dilbert.com";
 			
-			console.log('-> Dibert request');
+			console.log('-> Dilbert request');
 			request(url, function (error, response, body) {
 				var $ = cheerio.load(body);
 				var src = $(".img-comic").attr('src');
-				console.log('Dibert -> ' + src);
+				console.log('Dilbert -> ' + src);
 				self.sendSocketNotification("COMIC", {
 					img : src
 				});
