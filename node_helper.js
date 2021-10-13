@@ -23,13 +23,13 @@ module.exports = NodeHelper.create({
 				.then(body => {
 					var $ = cheerio.load(body);
 					var src = $(".img-comic").attr('src');
-					console.log('Dibert img -> ' + src);
+					console.log('Dilbert img -> ' + src);
 					self.sendSocketNotification("COMIC", {
 						img : src
 					});
 				})
 				.catch((error) => {
-					console.log('Dibert Fetch Error -> ' + error);
+					console.log('Dilbert Fetch Error -> ' + error);
 				});
 			return;
 		}
