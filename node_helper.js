@@ -1,4 +1,4 @@
-var request = require('request');
+const fetch = require("node-fetch");
 var NodeHelper = require("node_helper");
 var cheerio = require("cheerio");
 
@@ -16,15 +16,21 @@ module.exports = NodeHelper.create({
 			
 			var url = "http://dilbert.com";
 			
-			console.log('-> Dibert request');
-			request(url, function (error, response, body) {
-				var $ = cheerio.load(body);
-				var src = $(".img-comic").attr('src');
-				console.log('Dibert -> ' + src);
-				self.sendSocketNotification("COMIC", {
-					img : src
+			console.log('-> node request -> ' + url);
+
+			fetch(url)
+				.then(response => response.text())
+				.then(body => {
+					var $ = cheerio.load(body);
+					var src = $(".img-comic").attr('src');
+					console.log('Dibert img -> ' + src);
+					self.sendSocketNotification("COMIC", {
+						img : src
+					});
+				})
+				.catch((error) => {
+					console.log('Dibert Fetch Error -> ' + error);
 				});
-			});
 			return;
 		}
 	},
