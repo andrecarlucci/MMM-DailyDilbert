@@ -39,8 +39,13 @@ Module.register("MMM-DailyDilbert", {
     },
 
     socketNotificationReceived: function(notification, payload) {
+        Log.info("Dilbert: socketNotificationReceived -> " + notification);
         if (notification === "COMIC") {
-            Log.info('Dilbert url return: ' + payload.img);
+            Log.info("Dilbert: COMIC payload -> " + JSON.stringify(payload));
+            if (!payload || !payload.img) {
+                Log.error("Dilbert: COMIC notification had no img; nothing to show.");
+                return;
+            }
             this.dailyComic = payload.img;
             this.updateDom(1000);
         }
@@ -51,15 +56,28 @@ Module.register("MMM-DailyDilbert", {
 
     // Override dom generator.
     getDom: function() {
+        Log.info("Dilbert: getDom -> dailyComic = '" + this.dailyComic + "'");
         var wrapper = document.createElement("div");
+
+        if (!this.dailyComic) {
+            Log.info("Dilbert: no comic loaded yet, rendering placeholder text.");
+            wrapper.innerHTML = "Loading Dilbert...";
+            return wrapper;
+        }
 
         var comicWrapper = document.createElement("div");
         comicWrapper.className = "dilbert-container";
-    
+
         var img = document.createElement("img");
         img.id = "dilbert-content";
         img.src = this.dailyComic;
 		img.classList.add('dilbert-image');
+        img.onload = function() {
+            Log.info("Dilbert: image loaded OK -> " + img.src);
+        };
+        img.onerror = function() {
+            Log.error("Dilbert: image FAILED to load -> " + img.src);
+        };
 		comicWrapper.appendChild(img);
         wrapper.appendChild(comicWrapper);
         return wrapper;
