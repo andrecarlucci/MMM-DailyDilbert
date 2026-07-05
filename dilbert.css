@@ -1,6 +1,6 @@
 /* The basic container */
 .dilbert-container {
-    overflow: hidden;
+    overflow: visible;
 
     /* To make the height of the container exact. */
     -webkit-box-sizing: border-box;

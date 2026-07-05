@@ -24,7 +24,8 @@ A module for MagicMirror<sup>2</sup> that displays a random Dilbert strip.
     module: 'MMM-DailyDilbert',
 	position: 'bottom_bar',
 	config: {
-		updateInterval : 36000000
+		updateInterval : 36000000,
+		scale : 100
 	}
  },
 ```
@@ -33,5 +34,6 @@ A module for MagicMirror<sup>2</sup> that displays a random Dilbert strip.
 | **Option** | **Description** |
 | --- | --- |
 | `updateInterval` | How often to rotate to a new random strip (in ms). Default is `36000000` (10 hours). Minimum enforced value is `60000` (1 minute). |
+| `scale` | Size of the comic image as a percentage. Default is `100`. Use values above `100` to make it bigger or below to make it smaller (e.g. `150` or `75`). |
 
 Heavily inspired by the awesome MagicMirror plugin [DailyXKCD](https://github.com/Blastitt/DailyXKCD).

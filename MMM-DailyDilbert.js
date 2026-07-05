@@ -3,6 +3,7 @@ Module.register("MMM-DailyDilbert", {
     // Default module config.
     defaults: {
         updateInterval : 10000 * 60 * 60, // 10 hours
+        scale : 100, // image scale in percent (100 = original size)
     },
 
     start: function() {
@@ -72,6 +73,7 @@ Module.register("MMM-DailyDilbert", {
         img.id = "dilbert-content";
         img.src = this.dailyComic;
 		img.classList.add('dilbert-image');
+        img.style.width = this.config.scale + "%";
         img.onload = function() {
             Log.info("Dilbert: image loaded OK -> " + img.src);
         };
