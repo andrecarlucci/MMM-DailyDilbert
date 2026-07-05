@@ -10,13 +10,11 @@ A module for MagicMirror<sup>2</sup> that displays a random Dilbert strip.
 > Wayback Machine.
 
 ## Dependencies
-  * A [MagicMirror<sup>2</sup>](https://github.com/MichMich/MagicMirror) installation
-  * [node-fetch](https://github.com/node-fetch/node-fetch) npm package
+  * A [MagicMirror<sup>2</sup>](https://github.com/MichMich/MagicMirror) installation (Node 18+, which provides a global `fetch`)
 
 ## Installation
   1. Clone this repo into your `modules` directory.
   2. Create an entry in your `config.js` file to tell this module where to display on screen.
-  3. Run `npm install node-fetch@2` inside the module directory.
   
  **Example:**
 ```
